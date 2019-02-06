@@ -1,0 +1,9 @@
+<%= link_to("<< Back To List" , books_path , :class => 'btn btn-primary') %><br><br>
+
+<%= form_for(@book , :url => books_path , :method => "post" , :multipart => true , :html => {class: 'col-lg-8 col-lg-offset-2'}) do |f| %>
+  
+  <%= render(:partial => "form" , :locals => {:f => f }) %>
+  <div class="form-group">
+    <%= f.submit("Create", :class => "btn btn-primary form-control") %>
+  </div>
+<% end %>

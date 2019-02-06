@@ -1,0 +1,14 @@
+<%= link_to("<< Back To List" , books_path , :class => 'btn btn-primary') %><br><br>
+<% if @book.present? %>
+    <h3><%= @book.name %></h3>
+    <%= image_tag(@book.cover_image.url, alt: 'Image' , size: "500x200") if @book.cover_image? %>
+    <%= form_for(@book , :url => book_path(@book) , :method => "delete") do |f|  %>
+        <p> Are you sure to delete ?! </p>
+        <%= f.submit("Delete" , :class => "btn btn-danger") %>
+        <%= link_to("Cancel" , books_path , :class => 'btn btn-primary') %><br><br>
+    <% end %>    
+<% else %>
+    <br><br><br><br><br><br><br><br><br><br>
+    <h1><center>Book Not Fount...</center></h1>
+<% end %>
+

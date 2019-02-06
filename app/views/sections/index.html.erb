@@ -1,0 +1,34 @@
+<%= link_to("ADD new section" , new_section_path , :class => 'btn btn-primary' ) %><hr>
+<table class="table table-dark">
+  <thead>
+<%# `section_id`, `name`, `position`, `visible`, `content_type`, `content`, `created_at`, `updated_at` %>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Page Name</th>
+      <th scope="col">section content</th>
+      <th scope="col">section name</th>
+      <th scope="col">section Rank</th>
+      <th scope="col">Available</th>
+      <th scope="col">Creation Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sections.each do |section| %>
+        <tr>
+            <th scope="row"><%= section.id %></th>
+            <td><%= section.page.title %></td>
+            <td><%= section.name %></td>
+            <td><%= section.content %></td>
+            <td><%= section.position %></td>
+            <td><%= section.visible ? 'true' : 'false' %></td>
+            <td><%= section.created_at %></td>
+            <td>
+                <%= link_to("Show", section_path(section), :class => 'btn btn-info') %>
+                <%= link_to("Edit" , edit_section_path(section) , :class => 'btn btn-success' ) %>
+                <%= link_to("Delete" , delete_section_path(section) , :class => 'btn btn-danger' ) %>
+            </td>
+        </tr>        
+    <% end %>        
+  </tbody>
+</table>

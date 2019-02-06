@@ -1,0 +1,36 @@
+<%= link_to("<< Back To List" , sections_path , :class => 'btn btn-primary') %><br><br>
+<%= form_group_for( f, :page_id , label: false )  do %>
+    <label>Page</label>
+    <%= f.select(:page_id , @pages.map{|page| [page.title , page.id]} , {} , :class => "form-control") %>
+<% end %>
+
+<%= form_group_for( f, :name , label: false )  do %>
+        <label>Section Name</label>
+        <%= f.text_field(:name , :class => "form-control") %>
+<% end %>  
+
+<%= form_group_for( f, :position , label: false )  do %>
+    <label>Position</label>
+    <%= f.select(:position , 1..@section_count , {} , :class => "form-control") %>
+<% end %>
+
+<%= form_group_for( f, :content , label: false )  do %>
+    <label>Content</label>
+    <%= f.text_area(:content , :size => "30x10" , :class => "form-control") %>
+<% end %>
+
+<%= form_group_for( f, :content_type , label: false )  do %>
+    <label>Content type</label>
+    <% if f.object.content_type %>
+        <%= f.radio_button(:content_type, 0 , :checked => false ) %> Text
+        <%= f.radio_button(:content_type, 1 , :checked => true  ) %> HTML
+    <% else !f.object.content_type %>  
+        <%= f.radio_button(:content_type, 0 , :checked => true ) %> Text
+        <%= f.radio_button(:content_type, 1 , :checked => false  ) %> HTML 
+    <% end %>
+<% end %>
+
+<%= form_group_for( f, :visible , label: false )  do %>
+    <label>Availabe</label>
+    <%= f.check_box(:visible ) %>
+<% end %>

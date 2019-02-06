@@ -1,0 +1,9 @@
+<h1> <center> Create Page </center> </h1>
+
+<%= form_for(@page , :url => pages_path(:book_id => @book_id) , :method => "post" , :html => {class: 'col-lg-8 col-lg-offset-2'}) do |f| %>
+  
+  <%= render(:partial => "form" , :locals => {:f => f }) %>
+  <div class="form-group">
+    <%= f.submit("Create", :class => "btn btn-primary form-control") %>
+  </div>
+<% end %>

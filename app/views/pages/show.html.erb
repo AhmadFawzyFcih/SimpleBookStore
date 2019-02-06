@@ -1,0 +1,10 @@
+<%= link_to("<< Back To List" , pages_path , :class => 'btn btn-primary') %>
+<% if @page.present? %>
+    <h1><%= @page.book.name %></h1>
+    <img src="<%= @page.book.new_cover_image %>">
+    <p><%= @page.title %></p>
+<% else %>
+    <br><br><br><br><br><br><br><br><br><br>
+    <h1><center>page Not Fount...</center></h1>
+<% end %>
+

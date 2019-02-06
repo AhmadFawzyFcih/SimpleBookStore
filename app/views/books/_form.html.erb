@@ -1,0 +1,36 @@
+
+<%= form_group_for( f, :name , label: false )  do %>
+        <label>Book Name</label>
+        <%= f.text_field(:name , :class => "form-control") %>
+<% end %>  
+
+<%= form_group_for( f, :description , label: false )  do %>
+    <label>Book Description</label>
+    <%= f.text_area(:description , :size => "30x5" , :class => "form-control") %>
+<% end %>
+
+
+<%= form_group_for( f, :cover_image , label: false )  do %>
+    <label>Book Cover</label>
+    <%= f.file_field(:cover_image , :class => "form-control") %><br>
+    <%= f.text_field(:remote_cover_image_url , :class => "form-control") %>
+    <small>Enter URL to an your Book Cover</small><br>
+    <% if f.object.cover_image? %>
+        <%= label_tag :remove_cover_image do %>
+                Remove image
+                <%= f.check_box :remove_cover_image %>
+        <% end %><br>
+        <%= image_tag(f.object.cover_image.url, alt: f.object.name , size: "500x200") %>
+   <% end %>
+<% end %>
+
+
+<%= form_group_for( f, :position , label: false )  do %>
+    <label>Position</label>
+    <%= f.select(:position , 1..@book_count+1 , {} , :class => "form-control") %>
+<% end %>
+
+<%= form_group_for( f, :visible , label: false )  do %>
+    <label>Availabe</label>
+    <%= f.check_box(:visible ) %>
+<% end %>

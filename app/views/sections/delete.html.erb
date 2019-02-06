@@ -1,0 +1,14 @@
+<%= link_to("<< Back To List" , sections_path , :class => 'btn btn-primary') %>
+<% if @section.present? %>
+    <h1><%= @section.book.name %></h1>
+    <img src="<%= @section.book.new_cover_image %>">
+    <p><%= @section.title %></p>
+    <%= form_for(@section , :url => section_path(@section) , :method => "delete") do |f|  %>
+        <p> Are you sure to delete ?! </p>
+        <%= f.submit("Delete" , :class => "btn btn-danger") %>
+    <% end %>
+<% else %>
+    <br><br><br><br><br><br><br><br><br><br>
+    <h1><center>section Not Fount...</center></h1>
+<% end %>
+

@@ -1,0 +1,10 @@
+<%= link_to("<< Back To List" , books_path , :class => 'btn btn-primary') %><br><br>
+<% if @book.present? %>
+    <%= image_tag(@book.cover_image.url, alt: 'Image' , size: "500x200") if @book.cover_image? %>
+    <h3><%= @book.name %></h3>
+    <p><%= @book.description %></p>
+<% else %>
+    <br><br><br><br><br><br><br><br><br><br>
+    <h1><center>Book Not Fount...</center></h1>
+<% end %>
+

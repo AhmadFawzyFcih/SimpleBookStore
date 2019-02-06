@@ -1,0 +1,42 @@
+<div class="register-box">
+  <div class="register-box-body">
+    <p class="login-box-msg">Sign in</p>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="form-group has-feedback">
+          <%= f.email_field :email, placeholder: "Email" , class: 'form-control' , autocomplete: "email" %>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback">
+          <%= f.password_field :password, class: 'form-control', placeholder: "Password" , autocomplete: "new-password" %>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+
+        <div class="actions">
+          <%= f.submit "Sign in" , class: 'btn btn-primary'  %>
+        </div>
+      <% end %>
+
+      <div class="social-auth-links text-center">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
+          Facebook</a>
+        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
+          Google+</a>
+      </div>
+
+      <%= render "devise/shared/links" %> 
+  </div>
+</div>

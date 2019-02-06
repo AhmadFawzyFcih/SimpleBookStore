@@ -1,0 +1,9 @@
+<h1> <center> Edit page </center> </h1>
+
+<%= form_for(@page , :url => page_path(@page) , :method => "patch" , :html => {class: 'col-lg-8 col-lg-offset-2'}) do |f| %>
+  
+  <%= render(:partial => "form" , :locals => {:f => f }) %>
+  <div class="form-group">
+    <%= f.submit("Update", :class => "btn btn-primary form-control") %>
+  </div>
+<% end %>
