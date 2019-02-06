@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   
   #******************************************************************************
   layout 'admin'
-  before_action :book_count , :expect => [:index , :show , :delete , :destroy]
+  before_action :book_count , :excpet => [:index , :show , :delete , :destroy]
   before_action :book
   before_action :authenticate_user!
   #******************************************************************************  
@@ -57,6 +57,7 @@ class BooksController < ApplicationController
 
   def book
     @book = Book.visible.where(:id => params[:id]).first
+    @title = "Welcome Book"
   end
 
   def book_count
